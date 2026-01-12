@@ -1,5 +1,5 @@
 module "service" {
-  source = "/Users/josimarjunior/Documents/workspace-vscode/descomplicando-ecs-linuxtips/module"
+  source = "https://github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v1"
 
   region = var.region
 
@@ -10,6 +10,8 @@ module "service" {
   service_memory              = var.service_memory
   service_listener            = data.aws_ssm_parameter.listener.value
   service_task_execution_role = aws_iam_role.main.arn
+
+  container_image = var.container_image
 
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   private_subnets = [
