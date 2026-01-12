@@ -22,11 +22,11 @@ echo "TERRAFORM - CI"
 
 cd ../terraform
 
-echo "DEPLOY - TERRAFORM INIT"
-terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
-
 echo "TERRAFORM - FORMAT CHECK"
 terraform fmt --recursive --check
+
+echo "DEPLOY - TERRAFORM INIT"
+terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
 
 echo "TERRAFORM - VALIDATE"
 terraform validate
