@@ -180,8 +180,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          source-branch: dev
-          target-branch: main
+          branch: dev
+          base: main
           title: "Merge dev into main"
           body: "Automated PR created by CI when pushing to dev."
           draft: false
