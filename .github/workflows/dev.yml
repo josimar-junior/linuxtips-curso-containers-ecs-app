@@ -176,12 +176,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create pull request from dev to main
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: dev
-          base: main
-          title: "Merge dev into main"
-          body: "Automated PR created by CI when pushing to dev."
-          draft: false
+      - name: Create PR from dev to main
+        run: |
+          PR_EXISTS=$(gh pr list --head dev --base main --state open --json number -q '.[0].number')
+          
+          if [ -z "$PR_EXISTS" ]; then
+            gh pr create \
+              --head dev \
+              --base main \
+              --title "Merge dev into main" \
+              --body "Automated PR created after successful ECS deployment."
+          else
+            echo "Pull Request already exists: #$PR_EXISTS"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
