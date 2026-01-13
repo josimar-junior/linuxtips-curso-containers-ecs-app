@@ -3,7 +3,11 @@ name: CI/CD Pipeline - Dev
 on:
   push:
     branches:
-     - dev
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
 
 env:
   AWS_ACCOUNT: "708011889051"
@@ -161,7 +165,7 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ env.AWS_REGION }}
+        AWS_REGION: ${{ env.AWS_REGION }}
 
   create-pr:
     runs-on: ubuntu-latest
