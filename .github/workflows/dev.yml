@@ -161,4 +161,23 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+
+  create-pr:
+    runs-on: ubuntu-latest
+    needs:
+      - wait-ecs-deploy
+    if: github.ref == 'refs/heads/dev'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create pull request from dev to main
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: dev
+          target-branch: main
+          title: "Merge dev into main"
+          body: "Automated PR created by CI when pushing to dev."
+          draft: false
