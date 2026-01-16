@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v1"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v2"
 
   region = var.region
 
@@ -54,4 +54,15 @@ module "service" {
   scale_tracking_cpu      = var.scale_tracking_cpu
   alb_arn                 = data.aws_ssm_parameter.alb_arn.value
   scale_tracking_requests = var.scale_tracking_requests
+
+  ### EFS ###
+  efs_volumes = [
+    {
+      volume_name      = "linuxtips-volume-efs"
+      file_system_id   = aws_efs_file_system.main.id
+      file_system_root = "/"
+      mount_point      = "/mnt/efs"
+      read_only        = false
+    }
+  ]
 }
