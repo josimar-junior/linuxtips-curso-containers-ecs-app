@@ -6,7 +6,7 @@ resource "aws_efs_file_system" "main" {
 resource "aws_security_group" "efs" {
   description = format("%s-efs-sg", var.service_name)
   name        = format("%s-efs-sg", var.service_name)
-  vpc_id      = data.aws_ssm_parameter.vpc_id
+  vpc_id      = data.aws_ssm_parameter.vpc_id.value
 
 
   ingress = [
