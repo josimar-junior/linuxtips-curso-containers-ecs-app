@@ -13,7 +13,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/version", func(c *fiber.Ctx) error {
-		return c.SendString("v9")
+		return c.SendString("v10")
 	})
 
 	app.Get("/healthcheck", func(c *fiber.Ctx) error {
@@ -66,7 +66,7 @@ func main() {
 		})
 	})
 
-	app.Get("/arquivos/:uuid", func(c *fiber.Ctx) error {
+	app.Get("/files/:uuid", func(c *fiber.Ctx) error {
 		id := c.Params("uuid")
 
 		_, err := uuid.Parse(id)
@@ -93,6 +93,10 @@ func main() {
 		}
 
 		return c.SendString(string(content))
+	})
+
+	app.GET("/printenv", func(c *fiber.Ctx) error {
+		return c.JSON(os.Environ())
 	})
 
 	_ = app.Listen(":8080")

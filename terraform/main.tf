@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v2"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v3"
 
   region = var.region
 
@@ -21,7 +21,19 @@ module "service" {
   ]
 
   environment_variables = var.environment_variables
-  capabilities          = var.capabilities
+
+  secrets = [
+    {
+      name      = "PARAMETER_STORE",
+      valueFrom = aws_ssm_parameter.test.arn
+    },
+    {
+      name      = "SECRET_MANAGER",
+      valueFrom = aws_secretsmanager_secret.test.arn
+    }
+  ]
+
+  capabilities = var.capabilities
 
   service_healthcheck = var.service_healthcheck
 
