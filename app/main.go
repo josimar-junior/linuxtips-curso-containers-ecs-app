@@ -95,7 +95,7 @@ func main() {
 		return c.SendString(string(content))
 	})
 
-	app.GET("/printenv", func(c *fiber.Ctx) error {
+	app.Get("/printenv", func(c *fiber.Ctx) error {
 		return c.JSON(os.Environ())
 	})
 
