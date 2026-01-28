@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v3"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v5"
 
   region = var.region
 
@@ -26,10 +26,6 @@ module "service" {
     {
       name      = "PARAMETER_STORE",
       valueFrom = aws_ssm_parameter.test.arn
-    },
-    {
-      name      = "SECRET_MANAGER",
-      valueFrom = aws_secretsmanager_secret.test.arn
     }
   ]
 
@@ -77,4 +73,6 @@ module "service" {
       read_only        = false
     }
   ]
+
+  service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
 }
