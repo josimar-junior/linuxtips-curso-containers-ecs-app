@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v3"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v4"
 
   region = var.region
 
@@ -77,4 +77,6 @@ module "service" {
       read_only        = false
     }
   ]
+
+  service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
 }
