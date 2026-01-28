@@ -26,10 +26,6 @@ module "service" {
     {
       name      = "PARAMETER_STORE",
       valueFrom = aws_ssm_parameter.test.arn
-    },
-    {
-      name      = "SECRET_MANAGER",
-      valueFrom = aws_secretsmanager_secret.test.arn
     }
   ]
 
