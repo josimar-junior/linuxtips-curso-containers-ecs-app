@@ -77,8 +77,8 @@ module "service" {
   service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
 
   ## Service connect
-  use_service_connect  = true
-  service_protocol     = "http"
-  service_connect_name = data.aws_ssm_parameter.service_connect_name.value
-  service_connect_arn  = data.aws_ssm_parameter.service_connect_arn.value
+  use_service_connect  = false
+  #service_protocol     = "http"
+  #service_connect_name = data.aws_ssm_parameter.service_connect_name.value
+  #service_connect_arn  = data.aws_ssm_parameter.service_connect_arn.value
 }

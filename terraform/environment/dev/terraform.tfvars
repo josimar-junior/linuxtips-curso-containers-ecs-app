@@ -73,4 +73,4 @@ scale_in_cooldown            = 60
 scale_tracking_cpu      = 50
 scale_tracking_requests = 30
 
-ssm_service_discovery_namespace = "/linuxtips/ecs/cloudmap/namespace"
+#ssm_service_discovery_namespace = "/linuxtips/ecs/cloudmap/namespace"
