@@ -74,7 +74,7 @@ module "service" {
     }
   ]
 
-  service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
+  #service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
 
   ## Service connect
   use_service_connect  = false

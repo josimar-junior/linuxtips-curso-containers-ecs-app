@@ -108,7 +108,9 @@ variable "scale_tracking_cpu" {}
 variable "scale_tracking_requests" {}
 
 ### Service Discovery
-variable "ssm_service_discovery_namespace" {}
+variable "ssm_service_discovery_namespace" {
+  default = null
+}
 
 variable "service_connect_name" {
   type    = string
