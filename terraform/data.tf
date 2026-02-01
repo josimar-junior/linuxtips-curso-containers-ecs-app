@@ -25,3 +25,11 @@ data "aws_ssm_parameter" "alb_arn" {
 data "aws_ssm_parameter" "service_discovery_namespace" {
   name = var.ssm_service_discovery_namespace
 }
+
+data "aws_ssm_parameter" "service_connect_name" {
+  name = var.service_connect_name
+}
+
+data "aws_ssm_parameter" "service_connect_arn" {
+  name = var.service_connect_arn
+}

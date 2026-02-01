@@ -10,6 +10,8 @@ ssm_alb_arn          = "/linuxtips/ecs/lb/internal/arn"
 ssm_private_subnet_1 = "/linuxtips-vpc/vpc/subnet_private_1a"
 ssm_private_subnet_2 = "/linuxtips-vpc/vpc/subnet_private_1b"
 ssm_private_subnet_3 = "/linuxtips-vpc/vpc/subnet_private_1c"
+service_connect_name = "/linuxtips/ecs/service-connect/namespace"
+service_connect_arn  = "/linuxtips/ecs/service-connect/dns"
 
 environment_variables = [
   {

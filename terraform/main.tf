@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v5"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v6"
 
   region = var.region
 
@@ -75,4 +75,10 @@ module "service" {
   ]
 
   service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
+
+  ## Service connect
+  use_service_connect  = true
+  service_protocol     = "http"
+  service_connect_name = data.aws_ssm_parameter.service_connect_name.value
+  service_connect_arn  = data.aws_ssm_parameter.service_connect_arn.value
 }
