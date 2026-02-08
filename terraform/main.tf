@@ -1,5 +1,5 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v9"
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v10"
   #source = "/Users/josimarjunior/Documents/workspace-vscode/linuxtips-curso-containers-ecs-module"
   region = var.region
 
