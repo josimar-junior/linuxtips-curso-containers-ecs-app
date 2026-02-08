@@ -15,6 +15,7 @@ env:
   APP_NAME: "linuxtips-app"
   CLUSTER_NAME: "linuxtips-ecs-cluster"
   REPOSITORY_NAME: "linuxtips/$APP_NAME"
+  DEPLOYMENT_GROUP_NAME: "linuxtips-ecs-cluster-linuxtips-app-cd"
 
 jobs:
   ci-app:
