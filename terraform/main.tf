@@ -1,6 +1,6 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v7"
-
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v8"
+  #source = "/Users/josimarjunior/Documents/workspace-vscode/linuxtips-curso-containers-ecs-module"
   region = var.region
 
   cluster_name                = var.cluster_name
@@ -81,4 +81,7 @@ module "service" {
   #service_protocol     = "http"
   #service_connect_name = data.aws_ssm_parameter.service_connect_name.value
   #service_connect_arn  = data.aws_ssm_parameter.service_connect_arn.value
+
+  deployment_controller = "CODE_DEPLOY"
+  codedeploy_strategy   = "CodeDeployDefault.ECSLinear10PercentEvery1Minutes"
 }
