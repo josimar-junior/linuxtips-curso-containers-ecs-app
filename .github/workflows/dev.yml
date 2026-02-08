@@ -183,7 +183,7 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     needs:
-      - wait-ecs-deploy
+      - wait-codedeploy
     if: github.ref == 'refs/heads/dev'
     steps:
       - name: Checkout repository
