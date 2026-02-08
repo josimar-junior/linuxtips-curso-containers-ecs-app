@@ -16,6 +16,7 @@ env:
   CLUSTER_NAME: "linuxtips-ecs-cluster"
   REPOSITORY_NAME: "linuxtips/$APP_NAME"
   DEPLOYMENT_GROUP_NAME: "linuxtips-ecs-cluster-linuxtips-app-cd"
+  APP_NAME_CODEDEPLOY: "linuxtips-ecs-cluster-linuxtips-app-cd"
 
 jobs:
   ci-app:
@@ -172,7 +173,7 @@ jobs:
       run: |
         # Get the latest deployment ID created for the application and deployment group
         DEPLOYMENT_ID=$(aws deploy list-deployments \
-          --application-name ${{ env.APP_NAME }} \
+          --application-name ${{ env.APP_NAME_CODEDEPLOY }} \
           --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }} \
           --query "deployments[0]" --output text)
         
