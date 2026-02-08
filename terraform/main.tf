@@ -1,6 +1,6 @@
 module "service" {
-  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v3"
-
+  source = "github.com/josimar-junior/linuxtips-curso-containers-ecs-module?ref=v10"
+  #source = "/Users/josimarjunior/Documents/workspace-vscode/linuxtips-curso-containers-ecs-module"
   region = var.region
 
   cluster_name                = var.cluster_name
@@ -26,10 +26,6 @@ module "service" {
     {
       name      = "PARAMETER_STORE",
       valueFrom = aws_ssm_parameter.test.arn
-    },
-    {
-      name      = "SECRET_MANAGER",
-      valueFrom = aws_secretsmanager_secret.test.arn
     }
   ]
 
@@ -77,4 +73,15 @@ module "service" {
       read_only        = false
     }
   ]
+
+  #service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
+
+  ## Service connect
+  use_service_connect = false
+  #service_protocol     = "http"
+  #service_connect_name = data.aws_ssm_parameter.service_connect_name.value
+  #service_connect_arn  = data.aws_ssm_parameter.service_connect_arn.value
+
+  deployment_controller = "CODE_DEPLOY"
+  codedeploy_strategy   = "CodeDeployDefault.ECSLinear10PercentEvery1Minutes"
 }
